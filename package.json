@@ -1,0 +1,36 @@
+{
+  "name": "ria-moneytransfer-e2e-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:headless": "cypress run --headless",
+    "cypress:run:chrome": "cypress run --browser chrome",
+    "cypress:run:firefox": "cypress run --browser firefox",
+    "cypress:run:allure": "cypress run --env allure=true",
+    "allure:generate": "allure generate cypress/reports/allure-results --clean -o cypress/reports/allure-report",
+    "allure:open": "allure open cypress/reports/allure-report",
+    "allure:serve": "allure serve cypress/reports/allure-results",
+    "test:allure": "npm run cypress:run:allure && npm run allure:generate && npm run allure:open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fguzman01/ria-moneytransfer-e2e-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fguzman01/ria-moneytransfer-e2e-tests/issues"
+  },
+  "homepage": "https://github.com/fguzman01/ria-moneytransfer-e2e-tests#readme",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.1",
+    "cypress": "^15.5.0"
+  }
+}

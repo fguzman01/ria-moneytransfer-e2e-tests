@@ -1,0 +1,22 @@
+# Allure Configuration File
+categories:
+  - name: "Failed Tests"
+    matchedStatuses:
+      - failed
+    messageRegex: ".*"
+    traceRegex: ".*"
+  - name: "Broken Tests"
+    matchedStatuses:
+      - broken
+    messageRegex: ".*"
+    traceRegex: ".*"
+  - name: "Passed Tests"
+    matchedStatuses:
+      - passed
+    messageRegex: ".*"
+    traceRegex: ".*"
+  - name: "Skipped Tests"
+    matchedStatuses:
+      - skipped
+    messageRegex: ".*"
+    traceRegex: ".*"
