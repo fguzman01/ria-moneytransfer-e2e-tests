@@ -3,8 +3,8 @@ import { safeClick, fillInput , waitForElement} from '../utils/WebUtils'
 import { WebUtils } from '../utils/WebUtils';
 
 class RiaHomePage  {
- 
- 
+
+  
   constructor() {
     
     this.url = '/'
@@ -17,7 +17,10 @@ class RiaHomePage  {
     this.countrySearchInput = '#destinationCountry'
     // Dropdown de moneda destino (receiving currency)
     this.receiveCurrencyDropdown = ".currency-to div[role='button'].dropdown-selected"
+    // Selector para el botón Register
+    this.registerButton = 'a[role="button"][name="primary"]:contains("Register")'
   }
+  
   
   
   
@@ -108,6 +111,16 @@ class RiaHomePage  {
         });
     });
 }
+
+/**
+   * Hace clic en el botón Register
+   */
+  clickRegisterButton() {
+    cy.log('[ACTION] Intentando hacer clic en el botón Register...');
+    WebUtils.waitForElement(this.registerButton);
+    WebUtils.safeClick(this.registerButton);
+    cy.log('[ACTION ✅] Clic en el botón Register realizado correctamente.');
+  }
 
 }
 

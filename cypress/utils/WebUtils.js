@@ -1,7 +1,39 @@
 // cypress/utils/WebUtils.js
 import { envConfig } from '../support/envConfig'
 
+
 export class WebUtils {
+
+  /**
+   * Maneja el banner de cookies si aparece
+   */
+  static handleCookieBanner() {
+  cy.log('[COOKIES] Esperando redirección al dominio seguro...');
+
+  // ⚠️ Usamos dominio directo para evitar restricciones de scope en cy.origin()
+  cy.url({ timeout: 15000 }).should('include', 'secure.riamoneytransfer.com');
+
+  cy.origin('https://secure.riamoneytransfer.com', () => {
+    cy.log('[COOKIES] En dominio seguro, verificando banner...');
+    cy.wait(2000); // pequeña espera para render del modal
+
+    cy.contains('Allow all cookies', { timeout: 5000 }).then(
+      ($btn) => {
+        if ($btn && $btn.length && $btn.is(':visible')) {
+          cy.wrap($btn).click({ force: true });
+          cy.log('[COOKIES ✅] Banner de cookies aceptado.');
+        } else {
+          cy.log('[COOKIES] No se detectó banner de cookies.');
+        }
+      },
+      () => {
+        cy.log('[COOKIES] No se detectó banner de cookies.');
+      }
+    );
+  });
+}
+
+
   /**
    * Navega a una ruta específica usando la baseUrl definida en envConfig
    * @param {string} path - Ruta baseUrl (ej: '/login')
