@@ -1,119 +1,142 @@
+# Ria Money Transfer – E2E Test Suite
 
-# Ria Money Transfer E2E Tests
+This repository contains end-to-end (E2E) automated tests for the **Ria Money Transfer** platform using **Cypress**, along with backend API tests using **Postman**.
 
-This repository contains end-to-end (E2E) automated tests for the Ria Money Transfer web application using Cypress.
+## ✅ Key Features
 
-## Features
-- Modular Cypress architecture (flows, pages, data, utils)
-- Data-driven testing with providers and models
-- Business logic flows for registration and calculator
-- Clean and maintainable Page Object pattern
-- Cookie banner handling and robust navigation utilities
-- Multi-language support for logs and comments
-- Mochawesome HTML reports for unified test results
+- ✅ Modular architecture: Flows, Pages, Models, and Utils
+- ✅ Page Object Model (POM) for maintainability
+- ✅ Business logic coverage for Calculator and Registration
+- ✅ Cookie banner handling for cross-domain flows
+- ✅ Data-driven testing via providers
+- ✅ Postman tests for GET/POST validations
+- ✅ Allure integration for rich reporting with test history, environment, and steps
+- ✅ Multi-browser support (Chrome, Firefox)
 
-## Getting Started
+---
 
-- Node.js >= 18
-- npm >= 9
-- Chrome or Firefox browser installed
+## 🚀 Getting Started
 
-### Installation
+### Prerequisites
+
+- Node.js >= 18  
+- npm >= 9  
+- Chrome or Firefox installed
+
+### Install dependencies
+
 ```bash
 npm install
 ```
 
-### Running Tests
-- Run all tests (headless):
-```bash
-npm run test
-```
-- Run all tests in Chrome UI:
+---
+
+## 🧪 Running Tests
+
+
+### Run tests with UI (headed mode)
+
 ```bash
 npm run test:headed
 ```
 
-### Generating Unified Mochawesome Report
-After running tests:
+### Run tests in a specific browser
+
 ```bash
-npx mochawesome-merge cypress/reports/mochawesome/*.json --output cypress/reports/mochawesome/mochawesome-merged.json
-npx mochawesome-report-generator cypress/reports/mochawesome/mochawesome-merged.json -o cypress/reports/mochawesome/merged-report.html
+npm run cypress:run:chrome
+npm run cypress:run:firefox
 ```
-Open `cypress/reports/mochawesome/merged-report.html` in your browser to view the results.
 
-## Project Structure
+---
+
+## 📊 Allure Reports
+
+Allure is configured to generate detailed and interactive reports:
+
+### Run tests and generate report:
+
+```bash
+npm run test:allure
+```
+
+This command will:
+1. Run tests with Allure enabled (in UI mode)
+2. Generate the report
+3. Open the Allure UI
+
+Alternatively, you can run commands individually:
+
+```bash
+npm run cypress:run:allure
+npm run allure:generate
+npm run allure:open
+```
+
+### Report Features:
+- Interactive dashboard with trends and categories
+- Step-by-step breakdown per test
+- Failure screenshots and environment context
+- Support for tags, epics, stories, and severity levels
+
+---
+
+## 📁 Project Structure
+
 ```
 cypress/
-    e2e/features/         # Test specs
-    flows/                # Business flows
-
-## Customization
-## License
-MIT
-
-```
-cypress/
-├── e2e/                    # Tests E2E
-│   └── money-transfer.cy.js
-├── fixtures/               # Datos de prueba
-│   └── example.json
-└── support/               # Comandos personalizados y configuración
-    ├── commands.js
-    └── e2e.js
+├── e2e/                    # Test specs
+│   ├── calculator.cy.js
+│   └── registration.cy.js
+├── flows/                  # Business Flows (e.g., CalculatorFlow, RegistrationFlow)
+├── pages/                 # Page Object Models
+├── models/                # Data models
+├── providers/             # Test data by scenario
+├── utils/                 # Web utility helpers
+├── reports/
+│   └── allure-results/    # Allure raw data
+│   └── mochawesome/       # HTML reports (optional)
+└── support/               # Custom Cypress commands and config
 ```
 
-## Configuración
+---
 
-La configuración principal se encuentra en `cypress.config.js`. Asegúrate de actualizar la `baseUrl` con la URL de tu aplicación.
+## 🧪 API Testing with Postman
 
-```javascript
-baseUrl: 'http://localhost:3000' // Cambia esto por tu URL
+The project includes a Postman collection covering:
+
+### ✅ GET – Validate Posts
+
+- Endpoint: `https://jsonplaceholder.typicode.com/posts`
+- Assertions:
+  - Status 200
+  - Each `title` and `body` field is not empty
+  - No content contains the word `zombie`
+
+### ✅ POST – Validate Pizza Toppings
+
+- Endpoint: `https://httpbin.org/post`
+- Request body:
+```json
+{
+  "student": "Tim Allen",
+  "email_address": "tim@homeimprovement.com",
+  "phone": "(408) 8674530",
+  "current_grade": "B+",
+  "topping": ["bacon", "cheese", "mushroom"]
+}
 ```
+- Assertions:
+  - Status is 200 or 201
+  - Toppings must include: bacon, cheese, mushroom
+  - Must not contain: chicken
 
-### `cy.login(username, password)`
-Realiza el login en la aplicación.
+> The Postman collection is located in `/postman/Ria Money Transfer - API Tests.postman_collection.json`
 
-### `cy.initiateMoneyTransfer(amount, recipient)`
-Inicia una transferencia de dinero.
+---
 
-## Reportes con Allure
+## 📘 Configuration
 
-Este proyecto está configurado para generar reportes detallados con **Allure Framework**:
-
-### Características de los reportes:
-- **Dashboard interactivo** con métricas de ejecución
-- **Historial de ejecuciones** y tendencias
-- **Categorización de tests** por severidad y tags
-- **Steps detallados** de cada test
-- **Screenshots automáticos** en caso de fallos
-- **Información de entorno** y configuración
-
-### Anotaciones Allure disponibles:
-- `cy.allure().epic('name')` - Agrupa funcionalidades grandes
-- `cy.allure().feature('name')` - Agrupa características relacionadas
-- `cy.allure().story('name')` - Describe la historia de usuario
-- `cy.allure().severity('level')` - Nivel: blocker, critical, normal, minor, trivial
-- `cy.allure().tag('tag')` - Etiquetas para filtrado
-- `cy.allure().step('description')` - Pasos del test
-- `cy.allure().description('text')` - Descripción detallada
-
-## Selectores de datos
-
-Este proyecto usa selectores `data-cy` para una mejor estabilidad de las pruebas:
-
-```html
-<button data-cy="login-button">Login</button>
-<input data-cy="amount-input" />
-<input data-cy="recipient-input" />
+Key configuration is located in `cypress.config.js`:
+```js
+baseUrl: 'https://www.riamoneytransfer.com'
 ```
-
-## Mejores prácticas
-
-1. Usa selectores `data-cy` en lugar de clases o IDs
-2. Mantén los tests independientes entre sí
-3. Usa fixtures para datos de prueba
-4. Limpia el estado entre tests cuando sea necesario
-5. Agrupa tests relacionados en el mismo archivo `describe`
-
-## Notas importantes
-
