@@ -4,21 +4,21 @@ import { WebUtils } from '../utils/WebUtils';
 
 export default class RegisterFlow {
   constructor() {
-    cy.log('[FLOW] Inicializando RegisterFlow...');
+    cy.log('[FLOW] Initializing RegisterFlow...');
     this.home = new RiaHomePage();
     this.register = new RegisterPage();
   }
 
   navigateToRegisterAndValidateCountry(expectedCountry) {
-    cy.log('[FLOW] Iniciando flujo de registro...');
+    cy.log('[FLOW] Starting register flow...');
     WebUtils.navigateTo('/')
     this.home.validateHomeLoaded()
     this.home.clickRegisterButton();
     
-    cy.log('[FLOW] Verificando banner de cookies antes de validar país...');
+  cy.log('[FLOW] Checking cookie banner before validating country...');
     WebUtils.handleCookieBanner();
     
     this.register.validateCountrySelectionPage(expectedCountry);
-    cy.log('[FLOW ✅] Flujo de registro validado correctamente.');
+  cy.log('[FLOW ✅] Register flow validated successfully.');
   }
 }

@@ -2,14 +2,14 @@ import RegisterFlow from '../../flows/RegisterFlow'
 
 let registerFlow
 
-describe('Flujo de registro - Validar redirección a selección de país', () => {
+describe('Register flow - Validate redirection to country selection', () => {
   beforeEach(() => {
     registerFlow = new RegisterFlow()
   })
 
-  it('Debe redirigir a la página de selección de país al hacer clic en Register', () => {
-    cy.log('[TEST] Iniciando validación del flujo de registro...')
+  it('Should redirect to country selection page when clicking Register', () => {
+    cy.log('[TEST] Starting register flow validation...')
     registerFlow.navigateToRegisterAndValidateCountry('Chile')
-    cy.log('[TEST ✅] Validación de redirección completada correctamente.')
+    cy.log('[TEST ✅] Redirection validation completed successfully.')
   })
 })

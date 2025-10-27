@@ -10,6 +10,9 @@ cypress/screenshots/
 cypress/reports/allure-results/
 cypress/reports/allure-report/
 
+# Mochawesome reports
+cypress/reports/mochawesome/
+
 # Logs
 *.log
 npm-debug.log*
@@ -38,6 +41,14 @@ coverage/
 ._*
 .Spotlight-V100
 .Trashes
+
+# IDE files
+.vscode/
+.idea/
+
+# Misc
+*.tmp
+*.swp
 ehthumbs.db
 Thumbs.db
 

@@ -2,23 +2,21 @@
 import { RiaCalculatorFlow } from '../../flows/RiaCalculatorFlow'
 import { RiaCalculatorProvider } from '../../data/providers/RiaCalculatorProvider'
 
-describe('Ria Calculator - Selección de país', () => {
+describe('Ria Calculator - Country selection', () => {
   let calculatorFlow
 
   beforeEach(() => {
     calculatorFlow = new RiaCalculatorFlow()
   })
 
-  it('Flujo completo: validación de mensaje, selección de país, moneda y conversión', () => {
+  it('Full flow: message validation, country selection, currency and conversion', () => {
     const data = RiaCalculatorProvider.getByCountry('Haiti')
-    cy.log('[TEST] Ejecutando flujo completo de transferencia de dinero')
+    cy.log('[TEST] Executing full money transfer flow')
     calculatorFlow.completeMoneyTransferFlow(data)
   })
   
   afterEach(() => {
-    cy.log('[AFTER] Test finalizado correctamente')
-    // Separador visual en consola
-    // eslint-disable-next-line no-console
+    cy.log('[AFTER] Test finished successfully')
     console.log('-------------------')
   })
 })

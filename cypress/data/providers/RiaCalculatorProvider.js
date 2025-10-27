@@ -7,9 +7,9 @@ export class RiaCalculatorProvider {
       Mexico: new RiaCalculatorModel('Mexico', 'CLP', 'MXN', 2500, 3000),
     };
 
-    const data = dataMap[country];
-    if (!data) throw new Error(`[DATA ❌] No existe configuración para el país: ${country}`);
-    cy.log(`[DATA ✅] Datos encontrados para: ${country}`);
-    return data;
+  const data = dataMap[country];
+  if (!data) throw new Error(`[DATA ] No configuration found for country: ${country}`);
+  cy.log(`[DATA ✅] Data found for: ${country}`);
+  return data;
   }
 }

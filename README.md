@@ -1,42 +1,55 @@
-# RIA Money Transfer E2E Tests
 
-Este proyecto contiene las pruebas end-to-end (E2E) para la aplicación de transferencias de dinero RIA usando Cypress.
+# Ria Money Transfer E2E Tests
 
-## Instalación
+This repository contains end-to-end (E2E) automated tests for the Ria Money Transfer web application using Cypress.
 
-1. Instalar las dependencias:
+## Features
+- Modular Cypress architecture (flows, pages, data, utils)
+- Data-driven testing with providers and models
+- Business logic flows for registration and calculator
+- Clean and maintainable Page Object pattern
+- Cookie banner handling and robust navigation utilities
+- Multi-language support for logs and comments
+- Mochawesome HTML reports for unified test results
+
+## Getting Started
+
+- Node.js >= 18
+- npm >= 9
+- Chrome or Firefox browser installed
+
+### Installation
 ```bash
 npm install
 ```
 
-## Comandos disponibles
-
-### Ejecutar tests en modo interactivo
+### Running Tests
+- Run all tests (headless):
 ```bash
-npm run cypress:open
+npm run test
+```
+- Run all tests in Chrome UI:
+```bash
+npm run test:headed
 ```
 
-### Ejecutar tests en modo headless
+### Generating Unified Mochawesome Report
+After running tests:
 ```bash
-npm run cypress:run
+npx mochawesome-merge cypress/reports/mochawesome/*.json --output cypress/reports/mochawesome/mochawesome-merged.json
+npx mochawesome-report-generator cypress/reports/mochawesome/mochawesome-merged.json -o cypress/reports/mochawesome/merged-report.html
 ```
+Open `cypress/reports/mochawesome/merged-report.html` in your browser to view the results.
 
-### Ejecutar tests en diferentes navegadores
-```bash
-npm run cypress:run:chrome
-npm run cypress:run:firefox
+## Project Structure
 ```
+cypress/
+    e2e/features/         # Test specs
+    flows/                # Business flows
 
-### Ejecutar tests con reportes Allure
-```bash
-npm run cypress:run:allure    # Ejecutar tests y generar datos de Allure
-npm run allure:generate       # Generar reporte HTML
-npm run allure:open          # Abrir reporte en el navegador
-npm run allure:serve         # Generar y servir reporte directamente
-npm run test:allure          # Ejecutar todo el flujo: tests + generar + abrir
-```
-
-## Estructura del proyecto
+## Customization
+## License
+MIT
 
 ```
 cypress/
@@ -56,8 +69,6 @@ La configuración principal se encuentra en `cypress.config.js`. Asegúrate de a
 ```javascript
 baseUrl: 'http://localhost:3000' // Cambia esto por tu URL
 ```
-
-## Comandos personalizados
 
 ### `cy.login(username, password)`
 Realiza el login en la aplicación.
@@ -106,6 +117,3 @@ Este proyecto usa selectores `data-cy` para una mejor estabilidad de las pruebas
 
 ## Notas importantes
 
-- Asegúrate de que la aplicación esté ejecutándose antes de correr los tests
-- Los videos y screenshots se guardan automáticamente en caso de fallos
-- Revisa la configuración en `cypress.config.js` según tus necesidades

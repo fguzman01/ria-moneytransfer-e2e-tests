@@ -3,22 +3,22 @@ import { envConfig } from '../support/envConfig';
 
  class RegisterPage {
   constructor() {
-    cy.log('[PAGE] Inicializando RegisterPage...');
-    // Selecctores en registerPage
+    cy.log('[PAGE] Initializing RegisterPage...');
+    // Selectors in RegisterPage
     this.countryNameSpan = "span.oen-ui-input-country-name-after-icon";
   }
 
   /**
-   * Valida que la página de selección de país muestre el país esperado
-   * @param {string} expectedCountry - País esperado (por defecto 'Chile')
+   * Validates that the country selection page shows the expected country
+   * @param {string} expectedCountry - Expected country (default 'Chile')
    */
   validateCountrySelectionPage(expectedCountry = 'Chile') {
-  cy.log('[VALIDATE] Verificando página de selección de país...');
+  cy.log('[VALIDATE] Checking country selection page...');
 
   
   cy.origin('https://secure.riamoneytransfer.com', () => {
     const selector = 'span.oen-ui-input-country-name-after-icon';
-    cy.log('[VALIDATE] Dentro del dominio seguro...');
+    cy.log('[VALIDATE] Inside secure domain...');
     
     cy.get(selector, { timeout: 10000 })
       .should('be.visible')
@@ -26,10 +26,10 @@ import { envConfig } from '../support/envConfig';
       .then((text) => {
         const countryText = text.trim();
         if (countryText === 'Chile') {
-          cy.log(`[VALIDATE ✅] País mostrado correctamente: ${countryText}`);
+          cy.log(`[VALIDATE] Country displayed correctly: ${countryText}`);
         } else {
           throw new Error(
-            `[VALIDATE ❌] País incorrecto. Esperado: ${expectedCountry}, Obtenido: ${countryText}`
+            `[VALIDATE] Incorrect country. Expected: ${expectedCountry}, Got: ${countryText}`
           );
         }
       });

@@ -7,7 +7,7 @@ export class RiaCalculatorFlow {
   }
 
   /**
-   * Selecciona el país y valida la moneda destino
+   * Selects the country and validates the destination currency
    * @param {string} country
    * @param {string} expectedCurrency
    */
@@ -17,7 +17,7 @@ export class RiaCalculatorFlow {
   }
 
   /**
-   * Ingresa el monto inicial y valida la conversión al cambiar el monto
+   * Enters the initial amount and validates the conversion when changing the amount
    * @param {number|string} initialAmount
    * @param {number|string} updatedAmount
    */
@@ -27,8 +27,8 @@ export class RiaCalculatorFlow {
   }
 
   /**
-   * Ejecuta el flujo completo de transferencia de dinero
-   * @param {object} data - Objeto con country, receiveCurrency, amount, updatedAmount
+   * Executes the complete money transfer flow
+   * @param {object} data - Object with country, receiveCurrency, amount, updatedAmount
    */
   completeMoneyTransferFlow(data) {
     WebUtils.navigateTo('/');

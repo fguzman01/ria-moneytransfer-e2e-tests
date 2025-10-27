@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "4fd7ea3c-b2f0-4505-a3c4-98c85afc18c3",
+		"name": "Ria Money Transfer - API Tests",
+		"description": "StartFragmentCollection creada para validar los endpoints GET y POST del ejercicio técnico QA de Ria Money TransferEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2200989"
+	},
+	"item": [
+		{
+			"name": "GET - Validate Posts Conten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const posts = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Each post has non-empty title and body\", () => {\r",
+							"  posts.forEach(p => {\r",
+							"    pm.expect(p.title, \"Title should not be empty\").to.be.a(\"string\").and.not.empty;\r",
+							"    pm.expect(p.body, \"Body should not be empty\").to.be.a(\"string\").and.not.empty;\r",
+							"  });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"No post contains the word 'zombie'\", () => {\r",
+							"  posts.forEach(p => {\r",
+							"    pm.expect(p.title.toLowerCase()).to.not.include(\"zombie\");\r",
+							"    pm.expect(p.body.toLowerCase()).to.not.include(\"zombie\");\r",
+							"  });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Validate Pizza Toppings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 or 201\", () => {\r",
+							"  pm.expect([200, 201]).to.include(pm.response.code);\r",
+							"});\r",
+							"\r",
+							"const res = pm.response.json();\r",
+							"const toppings = res.json.topping;;\r",
+							"\r",
+							"\r",
+							"pm.test(\"Toppings include bacon, cheese, and mushroom\", () => {\r",
+							"  pm.expect(toppings).to.include.members([\"bacon\", \"cheese\", \"mushroom\"]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Toppings do not include chicken\", () => {\r",
+							"  pm.expect(toppings).to.not.include(\"chicken\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"student\": \"Tim Allen\",\r\n  \"email_address\": \"tim@homeimprovement.com\",\r\n  \"phone\": \"(408) 8674530\",\r\n  \"current_grade\": \"B+\",\r\n  \"topping\": [\"bacon\", \"cheese\", \"mushroom\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

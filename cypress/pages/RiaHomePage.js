@@ -8,7 +8,7 @@ class RiaHomePage  {
   constructor() {
     
     this.url = '/'
-    // Locators reales del Ria Calculator
+  // Real locators for Ria Calculator
     this.sendingAmountInput = '#sending-amount'
     this.receivingAmountInput = '#receiving-amount'
     // Dropdown de país "Send to ..."
@@ -25,34 +25,34 @@ class RiaHomePage  {
   
   
   /**
-   * Espera que la moneda destino sea la esperada
-   * @param {string} code - Código de moneda esperado (ej: "HTG")
+   * Waits for the destination currency to be the expected one
+   * @param {string} code - Expected currency code (e.g., "HTG")
    */
   waitForDestinationCurrency(code) {
-    cy.log(`[VALIDATE] Esperando moneda destino: ${code}`);
+  cy.log(`[VALIDATE] Waiting for destination currency: ${code}`);
     WebUtils.waitForElement(this.receiveCurrencyDropdown);
     cy.get(this.receiveCurrencyDropdown, { timeout: 15000 })
       .should('be.visible')
       .should('have.text', code)
-      .then(() => cy.log(`[VALIDATE ✅] Moneda destino mostrada: ${code}`));
+  .then(() => cy.log(`[VALIDATE ✅] Destination currency displayed: ${code}`));
   }
   
 
   validateHomeLoaded() {
-    console.log('[VALIDATE] Validando carga de la Home de Ria...')
+    console.log('[VALIDATE] Validating Ria Home load...')
     WebUtils.waitForElement(this.sendToDropdown)
     WebUtils.waitForElement(this.sendingAmountInput)
     WebUtils.waitForElement(this.receivingAmountInput)
     WebUtils.waitForElement(this.primaryButton)
-    console.log('[VALIDATE ✅] Home de Ria cargada correctamente.')
+  console.log('[VALIDATE ✅] Ria Home loaded successfully.')
   }
 
   /**
-   * Selecciona un país en el dropdown de país.
-   * @param {string} country - Nombre visible del país a seleccionar
+   * Selects a country in the country dropdown.
+   * @param {string} country - Visible name of the country to select
    */
   selectCountry(country) {
-    cy.log(`[ACTION] Seleccionando país destino: ${country}`);
+  cy.log(`[ACTION] Selecting destination country: ${country}`);
     WebUtils.waitForElement(this.sendToDropdown)
     WebUtils.safeClick(this.sendToDropdown)
     WebUtils.waitForElement(this.countrySearchInput)
@@ -60,45 +60,45 @@ class RiaHomePage  {
     const countryOption = `span.complete-text:contains('${country}')`
     WebUtils.waitForElement(countryOption)
     WebUtils.safeClick(countryOption)
-    console.log(`[ACTION ✅] País seleccionado: ${country}`)
+  console.log(`[ACTION ✅] Country selected: ${country}`)
   }
 
-   /**
-   * Ingresa el monto en el campo de envío
-   * @param {string|number} amount - Monto a ingresar
+  /**
+   * Enters the amount in the sending field
+   * @param {string|number} amount - Amount to enter
    */
   enterAmount(amount) {
-    cy.log(`[ACTION] Ingresando monto: ${amount}`);
+  cy.log(`[ACTION] Entering amount: ${amount}`);
     WebUtils.waitForElement(this.sendingAmountInput);
     WebUtils.fillInput(this.sendingAmountInput, amount, true);
-    cy.log('[ACTION ✅] Monto ingresado correctamente');
+  cy.log('[ACTION ✅] Amount entered successfully');
   }
 
 
   /**
-   * Valida el mensaje mostrado cuando el campo de monto está vacío
+   * Validates the message shown when the amount field is empty
    */
   validateEmptyAmountMessage() {
     WebUtils.waitForElement(this.sendingAmountInput);
     cy.get(this.sendingAmountInput).clear();
     cy.contains('Quote is based on selected options with current fees and rates.', { timeout: 10000 })
       .should('be.visible')
-      .then(() => cy.log('[VALIDATE ✅] Mensaje de monto vacío mostrado correctamente.'));
+  .then(() => cy.log('[VALIDATE ✅] Empty amount message displayed correctly.'));
   }
 
 
   /**
-   * Valida que la conversión se actualiza correctamente al cambiar el monto
-   * @param {string|number} newAmount - Nuevo monto a ingresar
+   * Validates that the conversion updates correctly when changing the amount
+   * @param {string|number} newAmount - New amount to enter
    */
   validateConversionUpdates(newAmount) {
-  cy.log('[VALIDATE] Verificando actualización de conversión...');
+  cy.log('[VALIDATE] Checking conversion update...');
 
   // Capturar el valor actual de "Recipient receives"
   cy.get(this.receivingAmountInput)
     .invoke('val')
     .then((initialValue) => {
-      cy.log(`[VALIDATE] Valor inicial: ${initialValue}`);
+  cy.log(`[VALIDATE] Initial value: ${initialValue}`);
 
       // Ingresar el nuevo monto
       WebUtils.fillInput(this.sendingAmountInput, newAmount, true);
@@ -107,19 +107,19 @@ class RiaHomePage  {
       cy.get(this.receivingAmountInput, { timeout: 10000 })
         .should('not.have.value', initialValue)
         .then(($input) => {
-          cy.log(`[VALIDATE ✅] Conversión actualizada correctamente: ${$input.val()}`);
+          cy.log(`[VALIDATE ✅] Conversion updated successfully: ${$input.val()}`);
         });
     });
 }
 
-/**
-   * Hace clic en el botón Register
-   */
+  /**
+  * Clicks the Register button
+  */
   clickRegisterButton() {
-    cy.log('[ACTION] Intentando hacer clic en el botón Register...');
+  cy.log('[ACTION] Trying to click the Register button...');
     WebUtils.waitForElement(this.registerButton);
     WebUtils.safeClick(this.registerButton);
-    cy.log('[ACTION ✅] Clic en el botón Register realizado correctamente.');
+  cy.log('[ACTION ✅] Click on Register button performed successfully.');
   }
 
 }
