@@ -12,10 +12,8 @@ export class RiaCalculatorFlow {
    * @param {string} expectedCurrency
    */
   selectDestinationAndValidateCurrency(country, expectedCurrency) {
-    cy.log(`[FLOW] Seleccionando país: ${country} y validando moneda destino: ${expectedCurrency}`)
-    this.home.selectCountry(country)
-    this.home.waitForDestinationCurrency(expectedCurrency)
-    cy.log(`[FLOW ✅] País y moneda destino validados correctamente.`)
+    this.home.selectCountry(country);
+    this.home.waitForDestinationCurrency(expectedCurrency);
   }
 
   /**
@@ -24,11 +22,8 @@ export class RiaCalculatorFlow {
    * @param {number|string} updatedAmount
    */
   enterAmountAndValidateConversion(initialAmount, updatedAmount) {
-    cy.log(`[FLOW] Ingresando monto inicial: ${initialAmount}`)
-    this.home.enterAmount(initialAmount)
-    cy.log(`[FLOW] Validando actualización de conversión con monto: ${updatedAmount}`)
-    this.home.validateConversionUpdates(updatedAmount)
-    cy.log(`[FLOW ✅] Conversión validada correctamente tras actualizar el monto.`)
+    this.home.enterAmount(initialAmount);
+    this.home.validateConversionUpdates(updatedAmount);
   }
 
   /**
@@ -36,13 +31,10 @@ export class RiaCalculatorFlow {
    * @param {object} data - Objeto con country, receiveCurrency, amount, updatedAmount
    */
   completeMoneyTransferFlow(data) {
-    cy.log('[FLOW] Iniciando flujo completo de transferencia de dinero.')
-    WebUtils.navigateTo('/')
-    this.home.validateHomeLoaded()
-    cy.log('[FLOW] Validando mensaje de monto vacío.')
-    this.home.validateEmptyAmountMessage()
-    this.selectDestinationAndValidateCurrency(data.country, data.receiveCurrency)
-    this.enterAmountAndValidateConversion(data.amount, data.updatedAmount)
-    cy.log('[FLOW ✅] Flujo completo de transferencia finalizado correctamente.')
+    WebUtils.navigateTo('/');
+    this.home.validateHomeLoaded();
+    this.home.validateEmptyAmountMessage();
+    this.selectDestinationAndValidateCurrency(data.country, data.receiveCurrency);
+    this.enterAmountAndValidateConversion(data.amount, data.updatedAmount);
   }
 }

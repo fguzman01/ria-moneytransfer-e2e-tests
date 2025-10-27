@@ -4,17 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:run:headless": "cypress run --headless",
-    "cypress:run:chrome": "cypress run --browser chrome",
-    "cypress:run:firefox": "cypress run --browser firefox",
-    "cypress:run:allure": "cypress run --env allure=true",
-    "allure:generate": "allure generate cypress/reports/allure-results --clean -o cypress/reports/allure-report",
-    "allure:open": "allure open cypress/reports/allure-report",
-    "allure:serve": "allure serve cypress/reports/allure-results",
-    "test:allure": "npm run cypress:run:allure && npm run allure:generate && npm run allure:open"
+  "cypress:open": "cypress open",
+  "cypress:run": "cypress run",
+  "cypress:run:headless": "cypress run --headless",
+  "cypress:run:chrome:ui": "cypress run --browser chrome --headed",
+  "cypress:run:chrome": "cypress run --browser chrome",
+  "cypress:run:firefox": "cypress run --browser firefox",
+  "test": "npm run cypress:run",
+  "test:headed": "npm run cypress:run:chrome:ui"
   },
   "repository": {
     "type": "git",
@@ -31,6 +28,9 @@
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.41.2",
     "allure-commandline": "^2.34.1",
-    "cypress": "^15.5.0"
+    "cypress": "^15.5.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.3.0"
   }
 }

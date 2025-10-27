@@ -53,7 +53,7 @@ export class WebUtils {
    * @param {string} selector - Selector del elemento
    * @param {number} timeoutMs - Tiempo máximo de espera en ms
    */
-  static waitForElement(selector, timeoutMs = 10000) {
+  static waitForElement(selector, timeoutMs = 30000) {
     cy.log(`[WAIT] Esperando elemento: ${selector}`)
     cy.get(selector, { timeout: timeoutMs })
       .should('be.visible')

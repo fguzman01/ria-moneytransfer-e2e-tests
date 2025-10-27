@@ -1,0 +1,163 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-10-27T20:00:00.229Z",
+    "end": "2025-10-27T20:00:32.426Z",
+    "duration": 32197
+  },
+  "results": [
+    {
+      "uuid": "0577925a-a820-45b4-afc4-7a8017ac4a6e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\registerCountrySelection.cy.js",
+      "file": "cypress\\e2e\\features\\registerCountrySelection.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e69dd717-7429-409e-abc2-256aceccb9dd",
+          "title": "Flujo de registro - Validar redirección a selección de país",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Debe redirigir a la página de selección de país al hacer clic en Register",
+              "fullTitle": "Flujo de registro - Validar redirección a selección de país Debe redirigir a la página de selección de país al hacer clic en Register",
+              "timedOut": null,
+              "duration": 17110,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('[TEST] Iniciando validación del flujo de registro...');\nregisterFlow.navigateToRegisterAndValidateCountry('Chile');\ncy.log('[TEST ✅] Validación de redirección completada correctamente.');",
+              "err": {},
+              "uuid": "6975de1a-77d6-446b-b8d3-3ac2cd2266c1",
+              "parentUUID": "e69dd717-7429-409e-abc2-256aceccb9dd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6975de1a-77d6-446b-b8d3-3ac2cd2266c1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 17110,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "12932c21-bf23-4cdd-840d-47c63483880f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\riaCalculatorCountrySelection.cy.js",
+      "file": "cypress\\e2e\\features\\riaCalculatorCountrySelection.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1ca67bce-bdde-4ed1-b852-0964cc3b040d",
+          "title": "Ria Calculator - Selección de país",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Flujo completo: validación de mensaje, selección de país, moneda y conversión",
+              "fullTitle": "Ria Calculator - Selección de país Flujo completo: validación de mensaje, selección de país, moneda y conversión",
+              "timedOut": null,
+              "duration": 12154,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = _RiaCalculatorProvider.RiaCalculatorProvider.getByCountry('Haiti');\ncy.log('[TEST] Ejecutando flujo completo de transferencia de dinero');\ncalculatorFlow.completeMoneyTransferFlow(data);",
+              "err": {},
+              "uuid": "e2a8e8ec-8ada-4a42-b2a5-7c46bd704124",
+              "parentUUID": "1ca67bce-bdde-4ed1-b852-0964cc3b040d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e2a8e8ec-8ada-4a42-b2a5-7c46bd704124"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12154,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

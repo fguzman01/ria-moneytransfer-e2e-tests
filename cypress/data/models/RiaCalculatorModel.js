@@ -17,6 +17,6 @@ export class RiaCalculatorModel {
   }
 
   getSummary() {
-    return `Enviar ${this.amount} ${this.sendCurrency} a ${this.country} (${this.receiveCurrency}), luego actualizar a ${this.updatedAmount}`;
+    return `Send ${this.amount} ${this.sendCurrency} a ${this.country} (${this.receiveCurrency}), luego actualizar a ${this.updatedAmount}`;
   }
 }

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-27T20:00:20.180Z",
+    "end": "2025-10-27T20:00:32.426Z",
+    "duration": 12246,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "12932c21-bf23-4cdd-840d-47c63483880f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\riaCalculatorCountrySelection.cy.js",
+      "file": "cypress\\e2e\\features\\riaCalculatorCountrySelection.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1ca67bce-bdde-4ed1-b852-0964cc3b040d",
+          "title": "Ria Calculator - Selección de país",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Flujo completo: validación de mensaje, selección de país, moneda y conversión",
+              "fullTitle": "Ria Calculator - Selección de país Flujo completo: validación de mensaje, selección de país, moneda y conversión",
+              "timedOut": null,
+              "duration": 12154,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = _RiaCalculatorProvider.RiaCalculatorProvider.getByCountry('Haiti');\ncy.log('[TEST] Ejecutando flujo completo de transferencia de dinero');\ncalculatorFlow.completeMoneyTransferFlow(data);",
+              "err": {},
+              "uuid": "e2a8e8ec-8ada-4a42-b2a5-7c46bd704124",
+              "parentUUID": "1ca67bce-bdde-4ed1-b852-0964cc3b040d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e2a8e8ec-8ada-4a42-b2a5-7c46bd704124"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12154,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

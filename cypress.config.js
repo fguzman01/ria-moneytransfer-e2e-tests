@@ -5,10 +5,10 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      allureWriter(on, config)
-      return config
+      // Si no usas Allure, puedes quitar allureWriter(on, config)
+      return config;
     },
-    baseUrl: 'https://www.riamoneytransfer.com/', // Cambia esto por la URL de tu aplicación
+    baseUrl: 'https://www.riamoneytransfer.com/',
     viewportWidth: 1280,
     viewportHeight: 720,
     video: true,
@@ -16,11 +16,12 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     requestTimeout: 10000,
     responseTimeout: 10000,
-    // Configuración de Allure
-    env: {
-      allure: true,
-      allureReuseAfterSpec: true,
-      allureResultsPath: 'cypress/reports/allure-results',
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports/mochawesome',
+      overwrite: false,
+      html: true,
+      json: true
     },
   },
   component: {
