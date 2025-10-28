@@ -44,7 +44,7 @@ export class WebUtils {
     const url = `${baseUrl}${path ? fullPath : ''}`
   cy.log(`[NAVIGATE] Navigating to: ${url}`)
     cy.visit(url)
-  cy.log(`[NAVIGATE ✅] Navigation successful: ${url}`)
+  cy.log(`[NAVIGATE] Navigation successful: ${url}`)
     cy.get('body', { timeout: envConfig.defaultTimeout }).should('be.visible')
   }
 
@@ -63,7 +63,7 @@ export class WebUtils {
         $el.css('box-shadow', '0 0 0 2px #ff9800')
         setTimeout(() => $el.css('box-shadow', orig), 300)
       })
-  cy.log(`[WAIT ✅] Element visible: ${selector}`)
+  cy.log(`[WAIT] Element visible: ${selector}`)
   }
 
   /**

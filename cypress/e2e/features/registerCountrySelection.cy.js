@@ -10,6 +10,6 @@ describe('Register flow - Validate redirection to country selection', () => {
   it('Should redirect to country selection page when clicking Register', () => {
     cy.log('[TEST] Starting register flow validation...')
     registerFlow.navigateToRegisterAndValidateCountry('Chile')
-    cy.log('[TEST ✅] Redirection validation completed successfully.')
+    cy.log('[TEST] Redirection validation completed successfully.')
   })
 })

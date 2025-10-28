@@ -8,19 +8,15 @@ class RiaHomePage  {
   constructor() {
     
     this.url = '/'
-  // Real locators for Ria Calculator
+  // Locators
     this.sendingAmountInput = '#sending-amount'
     this.receivingAmountInput = '#receiving-amount'
-    // Dropdown de país "Send to ..."
     this.sendToDropdown = ".calc-heading div[role='button'].dropdown-selected"
     this.primaryButton = 'a[role="button"][name="primary"]'
     this.countrySearchInput = '#destinationCountry'
-    // Dropdown de moneda destino (receiving currency)
     this.receiveCurrencyDropdown = ".currency-to div[role='button'].dropdown-selected"
-    // Selector para el botón Register
     this.registerButton = 'a[role="button"][name="primary"]:contains("Register")'
   }
-  
   
   
   
@@ -44,7 +40,7 @@ class RiaHomePage  {
     WebUtils.waitForElement(this.sendingAmountInput)
     WebUtils.waitForElement(this.receivingAmountInput)
     WebUtils.waitForElement(this.primaryButton)
-  console.log('[VALIDATE ✅] Ria Home loaded successfully.')
+  console.log('[VALIDATE] Ria Home loaded successfully.')
   }
 
   /**

@@ -4,7 +4,7 @@ import { envConfig } from '../support/envConfig';
  class RegisterPage {
   constructor() {
     cy.log('[PAGE] Initializing RegisterPage...');
-    // Selectors in RegisterPage
+    // Locators
     this.countryNameSpan = "span.oen-ui-input-country-name-after-icon";
   }
 

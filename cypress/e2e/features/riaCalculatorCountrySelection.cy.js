@@ -17,6 +17,6 @@ describe('Ria Calculator - Country selection', () => {
   
   afterEach(() => {
     cy.log('[AFTER] Test finished successfully')
-    console.log('-------------------')
+    
   })
 })

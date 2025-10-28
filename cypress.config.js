@@ -4,8 +4,8 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
-      // Si no usas Allure, puedes quitar allureWriter(on, config)
+      
+  
       return config;
     },
     baseUrl: 'https://www.riamoneytransfer.com/',

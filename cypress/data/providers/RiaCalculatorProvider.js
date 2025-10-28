@@ -9,7 +9,7 @@ export class RiaCalculatorProvider {
 
   const data = dataMap[country];
   if (!data) throw new Error(`[DATA ] No configuration found for country: ${country}`);
-  cy.log(`[DATA ✅] Data found for: ${country}`);
+  cy.log(`[DATA] Data found for: ${country}`);
   return data;
   }
 }
